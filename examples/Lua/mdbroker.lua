@@ -83,17 +83,19 @@ end
 
 --  ---------------------------------------------------------------------
 --  Delete any idle workers that haven't pinged us in a while.
+--  Workers are oldest to most recent, so we stop at the first alive worker.
 
 function broker_mt:purge_workers()
     local waiting = self.waiting
-    for n=1,#waiting do
-        local worker = waiting[n]
-        if (worker:expired()) then
-            if (self.verbose) then
+    while waiting[1] do
+        local worker = waiting[1]
+        if worker:expired() then
+            if self.verbose then
                 s_console("I: deleting expired worker: %s", worker.identity)
             end
-
             self:worker_delete(worker, false)
+        else
+          break
         end
     end
 end
