@@ -12,7 +12,7 @@ require"zhelpers"
 local verbose = (arg[1] == "-v")
 local session = mdcliapi.new("tcp://localhost:5555", verbose)
 
-local count=1
+local count=0
 repeat
     local request = zmsg.new("Hello world")
     local reply = session:send("echo", request)
@@ -20,7 +20,7 @@ repeat
         break    --  Interrupt or failure
     end
     count = count + 1
-until (count == 100000)
+until count == 100000
 printf("%d requests/replies processed\n", count)
 session:destroy()
 
