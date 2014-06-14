@@ -124,7 +124,7 @@ end)
 
 -- start poller's event loop
 while true do
-    local cnt = assert(poller:poll(HEARTBEAT_INTERVAL * 1000))
+    local cnt = assert(poller:poll(HEARTBEAT_INTERVAL))
     --  Send heartbeats to idle workers if it's time
     if (s_clock() > heartbeat_at) then
         for i=1,#queue do

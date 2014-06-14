@@ -182,7 +182,7 @@ frontends:add(localfe, zmq.POLLIN, function() localfe_ready = true end)
 frontends:add(cloudfe, zmq.POLLIN, function() cloudfe_ready = true end)
 
 while true do
-    local timeout = (#worker_queue > 0) and 1000000 or -1
+    local timeout = (#worker_queue > 0) and 1000 or -1
     --  If we have no workers anyhow, wait indefinitely
     rc = backends:poll(timeout)
     assert (rc >= 0)

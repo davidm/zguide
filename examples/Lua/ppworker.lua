@@ -87,7 +87,7 @@ end
 poller:add(worker, zmq.POLLIN, worker_cb)
 
 while is_running do
-    local cnt = assert(poller:poll(HEARTBEAT_INTERVAL * 1000))
+    local cnt = assert(poller:poll(HEARTBEAT_INTERVAL))
 
     if (cnt == 0) then
         liveness = liveness - 1

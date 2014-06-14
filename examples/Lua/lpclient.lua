@@ -58,7 +58,7 @@ while (retries_left > 0) do
 
     while (expect_reply) do
         --  Poll socket for a reply, with timeout
-        local cnt = assert(poller:poll(REQUEST_TIMEOUT * 1000))
+        local cnt = assert(poller:poll(REQUEST_TIMEOUT))
 
         -- Check if there was no reply
         if (cnt == 0) then

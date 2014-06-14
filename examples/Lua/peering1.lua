@@ -49,7 +49,7 @@ poller:add(statefe, zmq.POLLIN, function()
 end)
 while true do
     --  Poll for activity, or 1 second timeout
-    local count = assert(poller:poll(1000000))
+    local count = assert(poller:poll(1000))
 
     -- if no other activity.
     if count == 0 then

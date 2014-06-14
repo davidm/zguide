@@ -360,7 +360,7 @@ end)
 
 --  Get and process messages forever or until interrupted
 while (not s_interrupted) do
-    local cnt = assert(poller:poll(HEARTBEAT_INTERVAL * 1000))
+    local cnt = assert(poller:poll(HEARTBEAT_INTERVAL))
     --  Disconnect and delete any expired workers
     --  Send heartbeats to idle workers if needed
     if (s_clock() > self.heartbeat_at) then

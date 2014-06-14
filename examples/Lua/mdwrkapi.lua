@@ -91,7 +91,7 @@ function obj_mt:recv(reply)
 
     self.got_msg = false
     while true do
-        local cnt = assert(self.poller:poll(self.heartbeat * 1000))
+        local cnt = assert(self.poller:poll(self.heartbeat))
         if cnt ~= 0 and self.got_msg then
             self.got_msg = false
             local msg = zmsg.recv(self.worker)

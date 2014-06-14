@@ -67,7 +67,7 @@ local client_task = pre_code .. [[
             msg:send(client)
 
             --  Wait max ten seconds for a reply, then complain
-            rc = poller:poll(10 * 1000000)
+            rc = poller:poll(10 * 1000)
             assert (rc >= 0)
 
             if task_id then
@@ -257,7 +257,7 @@ local MAX_BACKEND_REPLIES = 20
 
 while true do
     -- If we have no workers anyhow, wait indefinitely
-    local timeout = (local_capacity > 0) and 1000000 or -1
+    local timeout = (local_capacity > 0) and 1000 or -1
     local rc, err = backends:poll(timeout)
     assert (rc >= 0, err)
 

@@ -48,7 +48,7 @@ local client_task = [[
         --  Tick once per second, pulling in arriving messages
         local centitick
         for centitick=1,100 do
-            poller:poll(10000)
+            poller:poll(10)
         end
         local msg = zmsg.new()
         request_nbr = request_nbr + 1

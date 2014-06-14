@@ -70,7 +70,7 @@ end
 function obj_mt:recv()
     self.got_reply = false
 
-    local cnt = assert(self.poller:poll(self.timeout * 1000))
+    local cnt = assert(self.poller:poll(self.timeout))
     if cnt ~= 0 and self.got_reply then
         local msg = zmsg.recv(self.client)
         if self.verbose then

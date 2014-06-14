@@ -71,7 +71,7 @@ function obj_mt:send(service, request)
         self.got_reply = false
 
         while true do
-            local cnt = assert(self.poller:poll(self.timeout * 1000))
+            local cnt = assert(self.poller:poll(self.timeout))
             if cnt ~= 0 and self.got_reply then
                 local msg = zmsg.recv(self.client)
                 if self.verbose then
